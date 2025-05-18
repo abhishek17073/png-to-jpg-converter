@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PNG to JPG Converter - Free Online Tool</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f0f2f5;
+    }
+
+    header, footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px;
+    }
+
+    .tool-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .tool-box h1 {
+      color: #003366;
+      margin-bottom: 20px;
+    }
+
+    input[type="file"] {
+      margin: 15px 0;
+      padding: 10px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .ads-area {
+      margin: 20px 0;
+      text-align: center;
+      min-height: 90px;
+      background: #ddd;
+      border: 2px dashed #aaa;
+      color: #333;
+      padding: 10px;
+    }
+
+    footer {
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .tool-box {
+        margin: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h2>QuickFlipFiles - PNG to JPG Converter</h2>
+</header>
+
+<div class="container">
+
+  <!-- Ad Space (Top Banner) -->
+  <div class="ads-area">
+    <!-- Paste Google AdSense or Affiliate Code Here -->
+    [Top Banner Ad Placeholder]
+  </div>
+
+  <div class="tool-box">
+    <h1>Convert PNG to JPG in Seconds</h1>
+    <p>Select a PNG image and convert it to high-quality JPG instantly.</p>
+    <input type="file" id="fileInput" accept="image/png" />
+    <br />
+    <button id="convertBtn">Convert & Download</button>
+  </div>
+
+  <!-- Ad Space (Bottom or Sidebar) -->
+  <div class="ads-area">
+    <!-- Paste Ad Code or Promote Tool Here -->
+    [Side/Bottom Ad Placeholder]
+  </div>
+</div>
+
+<!-- Footer Ad -->
+<div class="ads-area">
+  [Footer Ad Placeholder]
+</div>
+
+<footer>
+  &copy; 2025 QuickFlipFiles | Designed for Speed & Simplicity | <a href="#" style="color: #ffcc00;">More Tools</a>
+</footer>
+
+<script>
+  document.getElementById("convertBtn").addEventListener("click", function () {
+    const input = document.getElementById("fileInput");
+    if (!input.files.length) return alert("Please upload a PNG file");
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const img = new Image();
+      img.src = e.target.result;
+
+      img.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+
+        canvas.toBlob(function (blob) {
+          const link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = "converted.jpg";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(link.href);
+        }, "image/jpeg", 1.0);
+      };
+    };
+    reader.readAsDataURL(input.files[0]);
+  });
+</script>
+
+</body>
+</html>
